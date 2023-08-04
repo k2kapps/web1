@@ -10,12 +10,16 @@ const menuItems = [
         href: "/",
     },
     {
-        name: "About",
+        name: "Add Listing",
+        href: "/addlist",
+    },
+    {
+        name: "My Listing",
         href: "#",
     },
     {
-        name: "Contact",
-        href: "#",
+        name: "Listing",
+        href: "/listing",
     },
 ];
 

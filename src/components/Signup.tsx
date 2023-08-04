@@ -32,7 +32,6 @@ const Signup = () => {
     }
 
     return(
-        <div className="flex items-center justify-center">
             <div className={`mx-auto w-full max-w-lg bg-gray-200/50 rounded-xl p-10`}>
                 <div className="mb-2 flex justify-center">
                     <span className="inline-block w-full max-w-[60px]">
@@ -124,7 +123,7 @@ const Signup = () => {
                     </div>
                 </form>
             </div>
-        </div>
+   
     )
 }
 
