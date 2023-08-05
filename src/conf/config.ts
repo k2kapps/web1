@@ -1,6 +1,6 @@
 const conf = {
-    appwriteUrl: String(process.env.NEXT_PUBLIC_APPWRITE_URL),
-    appwriteProjectId: String(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID),
+    appwriteUrl: "https://cloud.appwrite.io/v1",
+    appwriteProjectId: "64b106551f99be65dcf5"
 }
 
 export default conf
