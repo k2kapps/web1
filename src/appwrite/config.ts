@@ -1,5 +1,5 @@
 import conf from "@/conf/config";
-import {Client, Account, ID, Databases} from 'appwrite'
+import {Client, Account, ID, Databases, Query } from 'appwrite'
 import { use } from "react";
 
 type CreateUserAccount = {
@@ -22,6 +22,10 @@ type addlist = {
     generator: string,
     origin: string,
     destination: string,
+    pd1: string,
+    dd1: string,
+    gtype: string,
+    tonn: string
 }
 
 
@@ -67,12 +71,23 @@ export class AppwriteService {
 
     async getCurrentUser() {
         try {
+            console.log("geting user data..........")
+            console.log((await account.get()).$id)
             return account.get()
         } catch (error) {
             console.log("getcurrentUser error: " + error)
             
         }
 
+        return null
+    }
+
+    async getUser() {
+        try {
+            return (await account.get()).$id
+        } catch (error) {
+            console.log("getcurrentUser error: " + error)
+        }
         return null
     }
 
@@ -95,11 +110,30 @@ export class AppwriteService {
         }
     }
 
+    //Get records
+    async getmydata() {
+        try {
+            const userdata = await db.listDocuments(
+                "64b4260506f0b6c083c2",
+                "64b816f75cb5c44c53cf",
+                [
+                    Query.equal('user_id', (await account.get()).$id)
+                    //Query.equal('user_id', ['64cbd213186b26af74c9'])
+                    //Query.equal('origin', ['Mangalore'])
+                ]
+            )
+            console.log(userdata)
+            return userdata
+        } catch (error:any) {
+            throw error
+        }
+    }
+
     //Put records
-    async putdata({origin,destination,generator}: addlist) {
+    async putdata({origin,destination,generator,pd1,dd1,gtype,tonn}: addlist) {
         console.log("Creating Document.......")
         try {
-            const userdata = await db.createDocument("64b4260506f0b6c083c2","64b816f75cb5c44c53cf",ID.unique(),{"generator":generator,"origin":origin,"destination":destination,"user_id":this.getCurrentUser})
+            const userdata = await db.createDocument("64b4260506f0b6c083c2","64b816f75cb5c44c53cf",ID.unique(),{"generator":generator,"origin":origin,"destination":destination,"pickdate":pd1,"delidate":dd1,"goodstype":gtype,"tonnage":tonn,"user_id":(await account.get()).$id})
             console.log(userdata)
         } catch (error:any) {
             throw error

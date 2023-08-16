@@ -15,7 +15,7 @@ const menuItems = [
     },
     {
         name: "My Listing",
-        href: "#",
+        href: "/mylist",
     },
     {
         name: "Listing",

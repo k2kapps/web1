@@ -1,4 +1,4 @@
-import Listing from "@/components/Listing";
+import Mylist from "@/components/Mylist";
 import Link from "next/link";
 import React from "react";
 
@@ -13,7 +13,7 @@ const RegisterPage = () => {
                     </Link>
                     <span className="text-1xl font-bold">My Account</span>
                 </h1>
-                <Listing />
+                <Mylist />
             </div>
 
     );
